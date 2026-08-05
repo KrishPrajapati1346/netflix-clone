@@ -1,0 +1,39 @@
+{
+  "name": "kinora",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kinora — a full-stack streaming platform (portfolio project).",
+  "license": "MIT",
+  "workspaces": [
+    "shared",
+    "server",
+    "client"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build:shared": "npm run build -w @kinora/shared",
+    "predev": "npm run build:shared",
+    "dev": "concurrently -n shared,server,client -c magenta,cyan,green \"npm:dev:shared\" \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:shared": "npm run dev -w @kinora/shared",
+    "dev:server": "npm run dev -w @kinora/server",
+    "dev:client": "npm run dev -w @kinora/client",
+    "build": "npm run build:shared && npm run build -w @kinora/server && npm run build -w @kinora/client",
+    "start:server": "npm run start -w @kinora/server",
+    "start:client": "npm run start -w @kinora/client",
+    "prelint": "npm run build:shared",
+    "lint": "npm run lint -w @kinora/server && npm run lint -w @kinora/client",
+    "pretypecheck": "npm run build:shared",
+    "typecheck": "npm run typecheck -w @kinora/shared && npm run typecheck -w @kinora/server && npm run typecheck -w @kinora/client",
+    "pretest": "npm run build:shared",
+    "test": "npm run test -w @kinora/server",
+    "test:e2e": "npm run test:e2e -w @kinora/client",
+    "preseed": "npm run build:shared",
+    "seed": "npm run seed -w @kinora/server",
+    "seed:tmdb": "npm run seed:tmdb -w @kinora/server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
