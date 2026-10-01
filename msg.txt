@@ -1,0 +1,43 @@
+Phase 1: foundation — auth, RBAC, shared contracts, CI
+
+Monorepo of three npm workspaces: @kinora/shared (Zod contracts + DTO
+types compiled to dist/ and consumed by both sides), @kinora/server
+(Express 5 + Mongoose 9), @kinora/client (Next 16 + React 19 + Tailwind 4).
+
+Auth:
+- Access token as a short-lived JWT held in memory, never web storage.
+- Refresh token as an opaque hashed secret in an httpOnly cookie, with
+  family-based rotation and reuse detection: replaying a retired token
+  revokes the whole family.
+- Single-flight refresh on the client, so concurrent 401s cannot make the
+  app look like a replay attack to its own server.
+- credentialsChangedAt vs token iat, so password changes and role
+  downgrades take effect on the next request rather than the next login.
+- Per-IP + per-account rate limiting plus durable account lockout.
+- Uniform failure responses so the endpoints cannot enumerate accounts.
+
+Offline-first: boots with an empty .env. Missing integrations become
+feature flags the client reads from GET /features, so unconfigured OAuth
+hides its buttons rather than offering one that 500s. Production refuses
+to start half-configured.
+
+Tests: 32 API integration tests (real MongoDB) covering the auth surface,
+rotation/reuse, RBAC and a privilege-escalation probe; 11 Playwright
+journeys covering registration through verification, session persistence,
+deep-link return, admin lockout and two accessibility invariants.
+
+Notable fixes made while verifying:
+- credentialsChangedAt carried millisecond precision but is compared
+  against JWT iat (whole seconds), so every freshly registered user was
+  rejected on their first authenticated request.
+- A token named --color-base in Tailwind v4's @theme generated a
+  text-base *colour* utility that shadowed the built-in text-base
+  *font-size*, breaking type scale and button colours app-wide.
+- Custom rate-limit keyGenerators fell back to raw req.ip, which lets an
+  IPv6 client bypass limits via its /64 allocation.
+- RedirectIfAuthenticated raced the register form's own navigation and
+  silently skipped email verification; removed by deriving the
+  post-auth destination from verification state instead.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+
