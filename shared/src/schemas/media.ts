@@ -1,19 +1,28 @@
-import { z } from 'zod';
-import { GENRES, LANGUAGES, MATURITY_RATINGS } from '../constants';
-import { maturityRatingSchema, mediaTypeSchema, objectIdSchema, paginationSchema, slugSchema } from './common';
+import { z } from "zod";
+import {
+  GENRES,
+  LANGUAGES,
+  MATURITY_RATINGS,
+  type LanguageCode,
+} from "../constants";
+import {
+  maturityRatingSchema,
+  mediaTypeSchema,
+  objectIdSchema,
+  paginationSchema,
+  slugSchema,
+} from "./common";
 
-const languageCodes = LANGUAGES.map((l) => l.code) as [string, ...string[]];
+const languageCodes = LANGUAGES.map((l) => l.code) as [
+  LanguageCode,
+  ...LanguageCode[],
+];
 
-/**
- * Query strings arrive as `?genre=Action&genre=Drama` (repeated) or
- * `?genre=Action,Drama` (joined). Normalising both into an array here means
- * controllers never have to think about it.
- */
 const csvArray = <T extends z.ZodTypeAny>(inner: T) =>
   z.preprocess((value) => {
-    if (value === undefined || value === null || value === '') return undefined;
-    if (Array.isArray(value)) return value.flatMap((v) => String(v).split(','));
-    return String(value).split(',');
+    if (value === undefined || value === null || value === "") return undefined;
+    if (Array.isArray(value)) return value.flatMap((v) => String(v).split(","));
+    return String(value).split(",");
   }, z.array(inner).optional());
 
 export const castMemberSchema = z.object({
@@ -26,9 +35,9 @@ export type CastMember = z.infer<typeof castMemberSchema>;
 
 /** One rendition of a playable asset. `auto` picks the HLS master playlist. */
 export const videoSourceSchema = z.object({
-  label: z.enum(['auto', '1080p', '720p', '480p']),
-  url: z.string().min(1, 'Source URL is required'),
-  type: z.enum(['hls', 'mp4']).default('hls'),
+  label: z.enum(["auto", "1080p", "720p", "480p"]),
+  url: z.string().min(1, "Source URL is required"),
+  type: z.enum(["hls", "mp4"]).default("hls"),
 });
 export type VideoSource = z.infer<typeof videoSourceSchema>;
 
@@ -40,22 +49,21 @@ export const subtitleTrackSchema = z.object({
 });
 export type SubtitleTrack = z.infer<typeof subtitleTrackSchema>;
 
-/** Named chapters power "Skip intro" and "Skip recap" when the data exists. */
 export const chapterSchema = z.object({
-  kind: z.enum(['intro', 'recap', 'credits']),
+  kind: z.enum(["intro", "recap", "credits"]),
   startSeconds: z.number().min(0),
   endSeconds: z.number().min(0),
 });
 export type Chapter = z.infer<typeof chapterSchema>;
 
 const titleBaseSchema = z.object({
-  title: z.string().trim().min(1, 'Title is required').max(200),
+  title: z.string().trim().min(1, "Title is required").max(200),
   slug: slugSchema.optional(),
-  overview: z.string().trim().max(5000).default(''),
+  overview: z.string().trim().max(5000).default(""),
   tagline: z.string().trim().max(300).optional(),
-  genres: z.array(z.enum(GENRES)).min(1, 'Pick at least one genre'),
-  language: z.enum(languageCodes).default('en'),
-  maturityRating: z.enum(MATURITY_RATINGS).default('PG-13'),
+  genres: z.array(z.enum(GENRES)).min(1, "Pick at least one genre"),
+  language: z.enum(languageCodes).default("en"),
+  maturityRating: z.enum(MATURITY_RATINGS).default("PG-13"),
   releaseDate: z.coerce.date().optional(),
   posterUrl: z.string().url().optional(),
   backdropUrl: z.string().url().optional(),
@@ -81,7 +89,9 @@ export type UpdateMovieInput = z.infer<typeof updateMovieSchema>;
 export const createShowSchema = titleBaseSchema.extend({
   firstAirDate: z.coerce.date().optional(),
   lastAirDate: z.coerce.date().optional(),
-  status: z.enum(['returning', 'ended', 'canceled', 'in_production']).default('returning'),
+  status: z
+    .enum(["returning", "ended", "canceled", "in_production"])
+    .default("returning"),
 });
 export type CreateShowInput = z.infer<typeof createShowSchema>;
 export const updateShowSchema = createShowSchema.partial();
@@ -91,12 +101,14 @@ export const createSeasonSchema = z.object({
   showId: objectIdSchema,
   seasonNumber: z.number().int().min(0),
   name: z.string().trim().min(1).max(120),
-  overview: z.string().trim().max(3000).default(''),
+  overview: z.string().trim().max(3000).default(""),
   posterUrl: z.string().url().optional(),
   airDate: z.coerce.date().optional(),
 });
 export type CreateSeasonInput = z.infer<typeof createSeasonSchema>;
-export const updateSeasonSchema = createSeasonSchema.partial().omit({ showId: true });
+export const updateSeasonSchema = createSeasonSchema
+  .partial()
+  .omit({ showId: true });
 export type UpdateSeasonInput = z.infer<typeof updateSeasonSchema>;
 
 export const createEpisodeSchema = z.object({
@@ -105,7 +117,7 @@ export const createEpisodeSchema = z.object({
   seasonNumber: z.number().int().min(0),
   episodeNumber: z.number().int().min(0),
   title: z.string().trim().min(1).max(200),
-  overview: z.string().trim().max(3000).default(''),
+  overview: z.string().trim().max(3000).default(""),
   stillUrl: z.string().url().optional(),
   runtimeMinutes: z.number().int().min(1).max(600),
   airDate: z.coerce.date().optional(),
@@ -115,14 +127,15 @@ export const createEpisodeSchema = z.object({
   isPublished: z.boolean().default(true),
 });
 export type CreateEpisodeInput = z.infer<typeof createEpisodeSchema>;
-export const updateEpisodeSchema = createEpisodeSchema.partial().omit({ showId: true, seasonId: true });
+export const updateEpisodeSchema = createEpisodeSchema
+  .partial()
+  .omit({ showId: true, seasonId: true });
 export type UpdateEpisodeInput = z.infer<typeof updateEpisodeSchema>;
 
 export const catalogSortSchema = z
-  .enum(['popularity', 'rating', 'releaseDate', 'title', 'runtime', 'newest'])
-  .default('popularity');
+  .enum(["popularity", "rating", "releaseDate", "title", "runtime", "newest"])
+  .default("popularity");
 
-/** The one filter contract used by /browse, /search and the admin catalog table. */
 export const catalogQuerySchema = paginationSchema.extend({
   type: mediaTypeSchema.optional(),
   genre: csvArray(z.enum(GENRES)),
@@ -134,13 +147,13 @@ export const catalogQuerySchema = paginationSchema.extend({
   runtimeMax: z.coerce.number().int().min(0).max(1000).optional(),
   minScore: z.coerce.number().min(0).max(10).optional(),
   sort: catalogSortSchema,
-  order: z.enum(['asc', 'desc']).default('desc'),
+  order: z.enum(["asc", "desc"]).default("desc"),
   q: z.string().trim().max(120).optional(),
 });
 export type CatalogQuery = z.infer<typeof catalogQuerySchema>;
 
 export const searchQuerySchema = catalogQuerySchema.extend({
-  q: z.string().trim().min(1, 'Enter something to search for').max(120),
+  q: z.string().trim().min(1, "Enter something to search for").max(120),
 });
 export type SearchQuery = z.infer<typeof searchQuerySchema>;
 

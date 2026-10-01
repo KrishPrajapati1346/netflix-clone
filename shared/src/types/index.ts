@@ -1,16 +1,21 @@
-import type { Genre, LanguageCode, MaturityRating, MediaType, UserRole } from '../constants';
-import type { Chapter, CastMember, SubtitleTrack, VideoSource } from '../schemas/media';
-import type { NotificationPreferences, PlaybackPreferences } from '../schemas/profile';
-import type { ListKind } from '../schemas/interactions';
-
-/**
- * Data-transfer shapes returned by the API.
- *
- * These are hand-written rather than inferred from Mongoose because the wire
- * format is a deliberate contract: ids are strings, dates are ISO strings, and
- * secrets (password hashes, PIN hashes, refresh tokens) are structurally absent
- * so they cannot leak by accident.
- */
+import type {
+  Genre,
+  LanguageCode,
+  MaturityRating,
+  MediaType,
+  UserRole,
+} from "../constants";
+import type {
+  Chapter,
+  CastMember,
+  SubtitleTrack,
+  VideoSource,
+} from "../schemas/media";
+import type {
+  NotificationPreferences,
+  PlaybackPreferences,
+} from "../schemas/profile";
+import type { ListKind } from "../schemas/interactions";
 
 export interface UserDTO {
   id: string;
@@ -19,7 +24,7 @@ export interface UserDTO {
   role: UserRole;
   isEmailVerified: boolean;
   avatarUrl: string | null;
-  authProviders: Array<'local' | 'google' | 'github'>;
+  authProviders: Array<"local" | "google" | "github">;
   createdAt: string;
 }
 
@@ -29,6 +34,8 @@ export interface ProfileDTO {
   avatarKey: string;
   avatarUrl: string | null;
   isKids: boolean;
+  handle: string | null;
+  isPublic: boolean;
   hasPin: boolean;
   language: LanguageCode;
   maturityLimit: MaturityRating;
@@ -40,7 +47,6 @@ export interface ProfileDTO {
 export interface AuthSessionDTO {
   user: UserDTO;
   accessToken: string;
-  /** Seconds until `accessToken` expires; the client refreshes shortly before. */
   expiresIn: number;
 }
 
@@ -60,7 +66,6 @@ export interface TitleSummaryDTO {
   averageScore: number;
   ratingCount: number;
   popularity: number;
-  /** 0–100 personalised affinity, or null when the viewer is anonymous. */
   matchScore: number | null;
 }
 
@@ -72,23 +77,19 @@ export interface TitleDetailDTO extends TitleSummaryDTO {
   keywords: string[];
   isFeatured: boolean;
   releaseDate: string | null;
-  /** Movies only. */
   sources: VideoSource[];
   subtitles: SubtitleTrack[];
   chapters: Chapter[];
-  /** TV only. */
   seasons: SeasonSummaryDTO[];
-  showStatus: 'returning' | 'ended' | 'canceled' | 'in_production' | null;
-  /** Viewer-specific state, null when anonymous. */
+  showStatus: "returning" | "ended" | "canceled" | "in_production" | null;
   viewerState: ViewerTitleStateDTO | null;
 }
 
 export interface ViewerTitleStateDTO {
   inLists: ListKind[];
-  reaction: 'like' | 'dislike' | 'none';
+  reaction: "like" | "dislike" | "none";
   rating: number | null;
   progress: ProgressDTO | null;
-  /** For shows: the episode Continue Watching would resume or start next. */
   nextEpisode: EpisodeSummaryDTO | null;
 }
 
@@ -128,7 +129,6 @@ export interface ProgressDTO {
   episodeId: string | null;
   positionSeconds: number;
   durationSeconds: number;
-  /** 0–1. */
   percent: number;
   completed: boolean;
   updatedAt: string;
@@ -140,11 +140,9 @@ export interface ContinueWatchingItemDTO {
   progress: ProgressDTO;
 }
 
-/** One horizontal carousel on the home page. */
 export interface CatalogRowDTO {
   key: string;
   title: string;
-  /** Why this row exists — surfaced in the UI so recommendations are explainable. */
   reason: string | null;
   items: TitleSummaryDTO[];
 }
@@ -165,7 +163,6 @@ export interface ReviewDTO {
     avatarUrl: string | null;
   };
   title: string;
-  /** Sanitised HTML — safe to render, already stripped of scripts server-side. */
   body: string;
   score: number;
   hasSpoilers: boolean;

@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: kinora-api
+    env: node
+    buildCommand: npm install && npm run build:shared && npm run build -w @kinora/backend
+    startCommand: npm run start:backend
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: CLIENT_URL
+        sync: false
+      - key: SERVER_URL
+        sync: false
+      - key: CROSS_SITE_COOKIES
+        value: "true"

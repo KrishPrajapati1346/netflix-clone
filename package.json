@@ -2,12 +2,12 @@
   "name": "kinora",
   "version": "1.0.0",
   "private": true,
-  "description": "Kinora — a full-stack streaming platform (portfolio project).",
+  "description": "Kinora \u2014 a full-stack streaming platform (portfolio project).",
   "license": "MIT",
   "workspaces": [
     "shared",
-    "server",
-    "client"
+    "backend",
+    "frontend"
   ],
   "engines": {
     "node": ">=20.0.0"
@@ -15,23 +15,24 @@
   "scripts": {
     "build:shared": "npm run build -w @kinora/shared",
     "predev": "npm run build:shared",
-    "dev": "concurrently -n shared,server,client -c magenta,cyan,green \"npm:dev:shared\" \"npm:dev:server\" \"npm:dev:client\"",
+    "dev": "concurrently -n shared,backend,frontend -c magenta,cyan,green \"npm:dev:shared\" \"npm:dev:backend\" \"npm:dev:frontend\"",
     "dev:shared": "npm run dev -w @kinora/shared",
-    "dev:server": "npm run dev -w @kinora/server",
-    "dev:client": "npm run dev -w @kinora/client",
-    "build": "npm run build:shared && npm run build -w @kinora/server && npm run build -w @kinora/client",
-    "start:server": "npm run start -w @kinora/server",
-    "start:client": "npm run start -w @kinora/client",
+    "dev:backend": "npm run dev -w @kinora/backend",
+    "dev:frontend": "npm run dev -w @kinora/frontend",
+    "build": "npm run build:shared && npm run build -w @kinora/backend && npm run build -w @kinora/frontend",
+    "start:backend": "npm run start -w @kinora/backend",
+    "start:frontend": "npm run start -w @kinora/frontend",
     "prelint": "npm run build:shared",
-    "lint": "npm run lint -w @kinora/server && npm run lint -w @kinora/client",
+    "lint": "npm run lint -w @kinora/backend && npm run lint -w @kinora/frontend",
     "pretypecheck": "npm run build:shared",
-    "typecheck": "npm run typecheck -w @kinora/shared && npm run typecheck -w @kinora/server && npm run typecheck -w @kinora/client",
+    "typecheck": "npm run typecheck -w @kinora/shared && npm run typecheck -w @kinora/backend && npm run typecheck -w @kinora/frontend",
     "pretest": "npm run build:shared",
-    "test": "npm run test -w @kinora/server",
-    "test:e2e": "npm run test:e2e -w @kinora/client",
+    "test": "npm run test -w @kinora/backend",
+    "test:e2e": "npm run test:e2e -w @kinora/frontend",
     "preseed": "npm run build:shared",
-    "seed": "npm run seed -w @kinora/server",
-    "seed:tmdb": "npm run seed:tmdb -w @kinora/server"
+    "seed": "npm run seed -w @kinora/backend --",
+    "seed:tmdb": "npm run seed:tmdb -w @kinora/backend",
+    "seed:reset": "npm run seed -w @kinora/backend -- --reset"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"

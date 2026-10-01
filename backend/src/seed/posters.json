@@ -1,0 +1,338 @@
+[
+  {
+    "slug": "battleship-potemkin",
+    "title": "Battleship Potemkin",
+    "article": "Battleship Potemkin",
+    "posterUrl": "/posters/battleship-potemkin.jpg",
+    "width": 600,
+    "height": 5000
+  },
+  {
+    "slug": "beat-the-devil",
+    "title": "Beat the Devil",
+    "article": "Beat the Devil (film)",
+    "posterUrl": "/posters/beat-the-devil.jpg",
+    "width": 600,
+    "height": 1254
+  },
+  {
+    "slug": "big-buck-bunny",
+    "title": "Big Buck Bunny",
+    "article": "Big Buck Bunny",
+    "posterUrl": "/posters/big-buck-bunny.jpg",
+    "width": 600,
+    "height": 2122
+  },
+  {
+    "slug": "carnival-of-souls",
+    "title": "Carnival of Souls",
+    "article": "Carnival of Souls",
+    "posterUrl": "/posters/carnival-of-souls.jpg",
+    "width": 600,
+    "height": 2855
+  },
+  {
+    "slug": "charade",
+    "title": "Charade",
+    "article": "Charade (1963 film)",
+    "posterUrl": "/posters/charade.jpg",
+    "width": 600,
+    "height": 2915
+  },
+  {
+    "slug": "cosmos-laundromat",
+    "title": "Cosmos Laundromat",
+    "article": "Cosmos Laundromat",
+    "posterUrl": "/posters/cosmos-laundromat.jpg",
+    "width": 600,
+    "height": 2172
+  },
+  {
+    "slug": "d-o-a",
+    "title": "D.O.A.",
+    "article": "D.O.A. (1949 film)",
+    "posterUrl": "/posters/d-o-a.jpg",
+    "width": 600,
+    "height": 2936
+  },
+  {
+    "slug": "dementia-13",
+    "title": "Dementia 13",
+    "article": "Dementia 13 (2017 film)",
+    "posterUrl": "/posters/dementia-13.jpg",
+    "width": 600,
+    "height": 326
+  },
+  {
+    "slug": "detour",
+    "title": "Detour",
+    "article": "Detour (1945 film)",
+    "posterUrl": "/posters/detour.jpg",
+    "width": 600,
+    "height": 3000
+  },
+  {
+    "slug": "elephants-dream",
+    "title": "Elephants Dream",
+    "article": "Elephants Dream",
+    "posterUrl": "/posters/elephants-dream.jpg",
+    "width": 600,
+    "height": 6000
+  },
+  {
+    "slug": "haxan",
+    "title": "Häxan",
+    "article": "Häxan",
+    "posterUrl": "/posters/haxan.jpg",
+    "width": 600,
+    "height": 418
+  },
+  {
+    "slug": "his-girl-friday",
+    "title": "His Girl Friday",
+    "article": "His Girl Friday",
+    "posterUrl": "/posters/his-girl-friday.jpg",
+    "width": 600,
+    "height": 2775
+  },
+  {
+    "slug": "house-on-haunted-hill",
+    "title": "House on Haunted Hill",
+    "article": "House on Haunted Hill (1999 film)",
+    "posterUrl": "/posters/house-on-haunted-hill.jpg",
+    "width": 600,
+    "height": 390
+  },
+  {
+    "slug": "kansas-city-confidential",
+    "title": "Kansas City Confidential",
+    "article": "Kansas City Confidential",
+    "posterUrl": "/posters/kansas-city-confidential.jpg",
+    "width": 600,
+    "height": 379
+  },
+  {
+    "slug": "meet-john-doe",
+    "title": "Meet John Doe",
+    "article": "Meet John Doe",
+    "posterUrl": "/posters/meet-john-doe.jpg",
+    "width": 600,
+    "height": 4109
+  },
+  {
+    "slug": "metropolis",
+    "title": "Metropolis",
+    "article": "Metropolis (1927 film)",
+    "posterUrl": "/posters/metropolis.jpg",
+    "width": 600,
+    "height": 2000
+  },
+  {
+    "slug": "my-man-godfrey",
+    "title": "My Man Godfrey",
+    "article": "My Man Godfrey (1936 film)",
+    "posterUrl": "/posters/my-man-godfrey.jpg",
+    "width": 600,
+    "height": 2935
+  },
+  {
+    "slug": "night-of-the-living-dead",
+    "title": "Night of the Living Dead",
+    "article": "Night of the Living Dead",
+    "posterUrl": "/posters/night-of-the-living-dead.jpg",
+    "width": 600,
+    "height": 362
+  },
+  {
+    "slug": "nosferatu",
+    "title": "Nosferatu",
+    "article": "Nosferatu (2024 film)",
+    "posterUrl": "/posters/nosferatu.jpg",
+    "width": 600,
+    "height": 384
+  },
+  {
+    "slug": "nothing-sacred",
+    "title": "Nothing Sacred",
+    "article": "Nothing Sacred (film)",
+    "posterUrl": "/posters/nothing-sacred.jpg",
+    "width": 600,
+    "height": 364
+  },
+  {
+    "slug": "plan-9-from-outer-space",
+    "title": "Plan 9 from Outer Space",
+    "article": "Plan 9 from Outer Space",
+    "posterUrl": "/posters/plan-9-from-outer-space.jpg",
+    "width": 600,
+    "height": 2794
+  },
+  {
+    "slug": "royal-wedding",
+    "title": "Royal Wedding",
+    "article": "Royal Wedding",
+    "posterUrl": "/posters/royal-wedding.jpg",
+    "width": 600,
+    "height": 387
+  },
+  {
+    "slug": "scarlet-street",
+    "title": "Scarlet Street",
+    "article": "Scarlet Street",
+    "posterUrl": "/posters/scarlet-street.jpg",
+    "width": 600,
+    "height": 1785
+  },
+  {
+    "slug": "sherlock-jr",
+    "title": "Sherlock Jr.",
+    "article": "Sherlock Jr.",
+    "posterUrl": "/posters/sherlock-jr.jpg",
+    "width": 600,
+    "height": 1576
+  },
+  {
+    "slug": "sintel",
+    "title": "Sintel",
+    "article": "Sintel",
+    "posterUrl": "/posters/sintel.jpg",
+    "width": 600,
+    "height": 1280
+  },
+  {
+    "slug": "spring",
+    "title": "Spring",
+    "article": "Spring (2019 film)",
+    "posterUrl": "/posters/spring.jpg",
+    "width": 600,
+    "height": 3206
+  },
+  {
+    "slug": "steamboat-bill-jr",
+    "title": "Steamboat Bill, Jr.",
+    "article": "Steamboat Bill Jr.",
+    "posterUrl": "/posters/steamboat-bill-jr.jpg",
+    "width": 600,
+    "height": 1015
+  },
+  {
+    "slug": "tears-of-steel",
+    "title": "Tears of Steel",
+    "article": "Tears of Steel",
+    "posterUrl": "/posters/tears-of-steel.png",
+    "width": 600,
+    "height": 4000
+  },
+  {
+    "slug": "teenagers-from-outer-space",
+    "title": "Teenagers from Outer Space",
+    "article": "Teenagers from Outer Space (film)",
+    "posterUrl": "/posters/teenagers-from-outer-space.jpg",
+    "width": 600,
+    "height": 2930
+  },
+  {
+    "slug": "the-39-steps",
+    "title": "The 39 Steps",
+    "article": "The 39 Steps (1935 film)",
+    "posterUrl": "/posters/the-39-steps.jpg",
+    "width": 600,
+    "height": 2226
+  },
+  {
+    "slug": "the-brain-that-wouldnt-die",
+    "title": "The Brain That Wouldn’t Die",
+    "article": "The Brain That Wouldn't Die",
+    "posterUrl": "/posters/the-brain-that-wouldnt-die.jpg",
+    "width": 600,
+    "height": 2570
+  },
+  {
+    "slug": "the-cabinet-of-dr-caligari",
+    "title": "The Cabinet of Dr. Caligari",
+    "article": "The Cabinet of Dr. Caligari (2005 film)",
+    "posterUrl": "/posters/the-cabinet-of-dr-caligari.jpg",
+    "width": 600,
+    "height": 361
+  },
+  {
+    "slug": "the-general",
+    "title": "The General",
+    "article": "The General (1926 film)",
+    "posterUrl": "/posters/the-general.png",
+    "width": 600,
+    "height": 1177
+  },
+  {
+    "slug": "the-hitch-hiker",
+    "title": "The Hitch-Hiker",
+    "article": "The Hitch-Hiker",
+    "posterUrl": "/posters/the-hitch-hiker.jpg",
+    "width": 600,
+    "height": 3000
+  },
+  {
+    "slug": "the-last-man-on-earth",
+    "title": "The Last Man on Earth",
+    "article": "The Last Man on Earth (1964 film)",
+    "posterUrl": "/posters/the-last-man-on-earth.jpg",
+    "width": 600,
+    "height": 392
+  },
+  {
+    "slug": "the-lodger",
+    "title": "The Lodger",
+    "article": "The Lodger (2009 film)",
+    "posterUrl": "/posters/the-lodger.jpg",
+    "width": 600,
+    "height": 317
+  },
+  {
+    "slug": "the-passion-of-joan-of-arc",
+    "title": "The Passion of Joan of Arc",
+    "article": "The Passion of Joan of Arc",
+    "posterUrl": "/posters/the-passion-of-joan-of-arc.png",
+    "width": 600,
+    "height": 3737
+  },
+  {
+    "slug": "the-phantom-of-the-opera",
+    "title": "The Phantom of the Opera",
+    "article": "The Phantom of the Opera (1925 film)",
+    "posterUrl": "/posters/the-phantom-of-the-opera.jpg",
+    "width": 600,
+    "height": 1193
+  },
+  {
+    "slug": "the-stranger",
+    "title": "The Stranger",
+    "article": "The Stranger (1946 film)",
+    "posterUrl": "/posters/the-stranger.jpg",
+    "width": 600,
+    "height": 2915
+  },
+  {
+    "slug": "the-terror",
+    "title": "The Terror",
+    "article": "The Terror (1963 film)",
+    "posterUrl": "/posters/the-terror.png",
+    "width": 600,
+    "height": 2006
+  },
+  {
+    "slug": "the-wasp-woman",
+    "title": "The Wasp Woman",
+    "article": "The Wasp Woman (1995 film)",
+    "posterUrl": "/posters/the-wasp-woman.png",
+    "width": 600,
+    "height": 356
+  },
+  {
+    "slug": "too-late-for-tears",
+    "title": "Too Late for Tears",
+    "article": "Too Late for Tears",
+    "posterUrl": "/posters/too-late-for-tears.jpg",
+    "width": 600,
+    "height": 390
+  }
+]
